@@ -100,4 +100,34 @@ console.log('Hello World !')
         deepCopy.address.city = "Mumbai";
 
         console.log(original1.address.city); // "Delhi" 
-        
+
+
+
+//  *  What is let var and const ?
+
+//  =>  let var and const all are used for declaration of variables.
+//  let => let is blocked scope variable.
+//         It can't be redecLared, but
+//         It can be reassign.
+//         It is hoisted but stay in TDZ (temproral dead zone).
+
+
+//  const => const is blocked scope variable.
+//           It can't be redecLared, and
+//           It cann't be reassign.
+//           It is hoisted but stay in TDZ (temproral dead zone).
+
+
+//  var => var is functional scope variable.
+//           It can be redecLared, and
+//           It cann be reassign.
+//           It is hoisted but as undefined.
+
+//  * What is TDZ (Temproal Dead Zone) ?
+//  => It is atime between when a variable is declared and and when it is initialized. during which we
+//     we cann't acces it.
+//     it is mainly used for let and const
+
+//  *  What is Hoisting ? 
+//  => Hoisting is a mechanism in js where a variable and function decleration are are moved to the top 
+//     of their scope during the compilation phase before the code exucted.
