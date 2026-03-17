@@ -131,3 +131,31 @@ console.log('Hello World !')
 //  *  What is Hoisting ? 
 //  => Hoisting is a mechanism in js where a variable and function decleration are are moved to the top 
 //     of their scope during the compilation phase before the code exucted.
+
+
+
+
+// ----------------Clousres------------
+
+//  *  What is Clousers ?
+// =>  Whenever there is nested function and parent function returning the child function without calling
+//     the child function and child function ha some dependency from their parent scope(lexical scope) 
+//     js creates clousre. where it stores the refrence for the parent dependency and by that child will 
+//     still be able to access the dependency even after parent is detoryed.
+
+    function outer(){
+        let greet = "I'm from outer fn"
+        return function inner(){
+            console.log(greet, 'printing from inner')
+        }
+    }
+
+    let greeting1 = outer()
+    greeting1()
+    greeting1()
+
+//  why we use clousres ? 
+// =>  *  Data Encapsuslation
+//     *  Factories Function    
+//     *  To remeber values
+//     *  Keep data private.
