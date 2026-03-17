@@ -66,10 +66,38 @@ console.log('Hello World !')
 
 
 
-
-
-
-
-    
 //      Shallow copy vs Deep Copy
 
+//  *  Shallow copy => A shallow copy copies only the first level, but nested objects are still shared
+//                     (same reference). so if u changesa nested value it will affect the original object.
+//   Example =>  
+    const original = {
+        name: "Rahul",
+        address: {
+            city: "Delhi"
+            }
+        };
+
+        const copy = { ...original }; // shallow copy
+
+        copy.address.city = "Mumbai";
+
+        console.log(original.address.city); // "Mumbai" 
+
+//  * Deep copy => A deep copy creates a completely independent clone, including all nested objects. so 
+//                 changes is the copied object doesn't changes original object.
+//   Example => 
+
+    const original1 = {
+        name: "Rahul",
+        address: {
+            city: "Delhi"
+            }
+        };
+
+        const deepCopy = JSON.parse(JSON.stringify(original1));
+
+        deepCopy.address.city = "Mumbai";
+
+        console.log(original1.address.city); // "Delhi" 
+        
