@@ -84,7 +84,7 @@ console.log('Hello World !')
 
         console.log(original.address.city); // "Mumbai" 
 
-//  * Deep copy => A deep copy creates a completely independent clone, including all nested objects. so 
+//  * Deep copy => A deep copy creates a completely independent copy, including all nested objects. so 
 //                 changes is the copied object doesn't changes original object.
 //   Example => 
 
@@ -159,3 +159,224 @@ console.log('Hello World !')
 //     *  Factories Function    
 //     *  To remeber values
 //     *  Keep data private.
+
+
+
+
+
+//   Synchrounous task excute line by line, and the next task wait until the previous
+//   one is finishes.
+
+// console.log('A')
+// console.log('B')
+// console.log('C')
+
+// output is =>  A -> B -> C.
+
+
+//   Asynchornous task allow the run task in background it doesn't block the execuation of other
+//   task.
+
+// console.log('async example')
+// console.log('A')
+
+// setTimeout(()=> {
+//   console.log('B')
+// },1000);
+
+// Promise.resolve().then(()=>{
+//   console.log('C')
+// })
+
+// console.log('D')
+
+// output is  A -> D -> C -> B
+
+
+//   Callback Funation => A callback fn is fn that is passed as an argument to another function
+//   and executed later after some opertaion is completed.
+
+
+// function greeting(name, callback){
+//   setTimeout(()=>{
+//     console.log(`Hello ${name}`)
+//   },1000)
+//   // console.log(`Hello ${name}`)
+//   callback()
+// }
+
+// function sayBye(){
+//   console.log('GoodyBye')
+// }
+
+// greeting('Alice', sayBye)
+
+
+//  callback hell => callback hell is the situtaion where multiples callbacks are nested inside
+//  each other that makes code hareder to read , understand and maintain.
+
+// setTimeout(()=>{
+//   console.log('step1')
+//   setTimeout(()=>{
+//     console.log('step2')
+//     setTimeout(()=>{
+//       console.log('step3')
+//       setTimeout(()=>{
+//       console.log('step4') 
+//     },1000)
+//     },1000)
+//   },1000)
+// },1000)
+
+
+
+// function orderFood(callback){
+//   setTimeout(()=>{
+//     console.log('Order Food')
+//     callback()
+//   },1000)
+// }
+
+
+// function prepareFood(callback){
+//   setTimeout(()=>{
+//     console.log('Prepare Food')
+//     callback()
+//   },1000)
+// }
+
+
+// function getFood(callback){
+//   setTimeout(()=>{
+//     console.log('Get Food')
+//     callback()
+//   },1000)
+// }
+
+
+// orderFood(()=>{
+//   prepareFood(()=>{
+//     getFood(()=>{
+//       console.log('Eat food')
+//     })
+//   })
+// })
+
+
+
+
+// function orderFood(){
+//   return new Promise((resolve)=>{
+//     setTimeout(()=>{
+//       console.log('Order Food')
+//       resolve()
+//     },1000)
+//   })
+// }
+
+
+// function prepareFood(){
+//   return new Promise((resolve,reject)=>{
+//     setTimeout(()=>{
+//       console.log('Preapre Food')
+//       reject('gas finished')
+//     },1000)
+//   })
+// }
+
+// function getFood(){
+//   return new Promise((resolve)=>{
+//     setTimeout(()=>{
+//       console.log('Get Food')
+//       resolve('Eat food')
+//     },1000)
+//   })
+// }
+
+// orderFood()
+// .then(prepareFood)
+// .then(getFood)
+// .then((res)=>console.log(res))
+// .catch((error)=>console.log(error))
+
+
+
+
+//  Promise => a promise is an object is js. it represet the result of asynchronous operation 
+//  in future either with scuccess value amd failure value.
+//  It has 3 staes Pedning , Fullfileed , Rejected
+
+// let myPromise = new Promise((res,rej)=>{
+//   let flag = false;
+//   if(flag){
+//     res('Yo Yo Honey Singh')
+//   }else{
+//     res('Badshah')
+//   }
+// })
+
+// myPromise.then((res)=>console.log(res))
+// .catch((rej)=>console.log(rej))
+
+
+//   Promise Channing => It means executing multiple asyc task one after another. where each
+//   steps wait for previous one to finish. Each.then() returns a new promise.
+
+// function step1(){
+//   return Promise.resolve('step1 done.')
+// }
+// function step2(){
+//   return Promise.resolve('step2 done.')
+// }
+// function step3(){
+//   return Promise.resolve('step3 done.')
+// }
+
+
+// step1().then((res)=>{
+//   console.log(res)
+//   return step2()
+// })
+// .then((res)=>{
+//   console.log(res)
+//   return step3()
+// })
+// .then((res)=>{
+//   console.log(res)
+//   setTimeout(()=>{console.log('All step done')},1000)
+// })
+
+
+
+//  Promise.all = > It used to handle multiple prommise in paralle and wait for all them to
+//  complete. it takes an array of promise and return a single promise that resolves when 
+//  all promise are resolved.
+
+// let p1 = Promise.resolve('A')
+// let p2 = Promise.resolve('B')
+// let p3 = Promise.resolve('C')
+
+
+// Promise.all([p1,p2,p3])
+// .then((res)=>console.log(res))
+// .catch((rej)=>console.log(rej))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
